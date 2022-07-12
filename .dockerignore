@@ -1,0 +1,6 @@
+./node_modules
+./prototype
+./build
+Dockerfile.*
+.gitignore
+package-lock.json
