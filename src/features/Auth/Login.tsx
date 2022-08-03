@@ -1,77 +1,47 @@
 import React from "react";
-import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { useTheme, Button, Card, Grid, Image, Link } from "@nextui-org/react";
-import { FormInput } from "../Layout/Form/Form";
-import { InfoText } from "../Layout/Text/Input";
+import { FormInput } from "../../components/Form/Form";
+import { InfoText } from "../../components/Text/Text";
 import { FaWineBottle } from "react-icons/fa";
-import { TbLock, TbLockOpen } from "react-icons/tb";
 import { RiGithubFill, RiGoogleFill, RiFacebookCircleFill } from "react-icons/ri";
+import { LoginContainer, LoginInnerContainer, LoginGridContainer } from "./LoginStlyeComponent";
 import Consts from "../../common/consts";
 import LoginImage from "../../assets/images/Login.png";
+import "./Login.scss";
 
-const LoginContainer = styled.div`
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-`;
-
-const LoginInnerContainer = styled.div`
-    width: 75%;
-    height: 75%;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 1rem;
-`;
-
-const LoginGridContainer = styled(Grid.Container)`
-    width: 100%;
-    height: 100%;
-`;
-
-const Login: React.FC<any> = () => {
+const Login: React.FC = () => {
     const navigator = useNavigate();
     const { theme } = useTheme();
 
     const onLogin = () => {
         /**
-         * TODO: Login...
+         * TODO: Login... (RTK)
          */
 
         navigator("/home", { replace: true });
     };
 
     return (
-        <LoginContainer
-            style={{
-                backgroundColor: Consts.LAYOUT_COLORS.MAIN,
-            }}>
+        <LoginContainer className="login-container">
             <LoginInnerContainer
+                className="login-container--inner"
                 style={{
-                    borderStyle: "solid",
-                    borderColor: Consts.LAYOUT_COLORS.AUXILIARY,
                     borderWidth: theme?.borderWeights.normal.value,
-                    backgroundColor: Consts.LAYOUT_COLORS.OPPOSITE,
-                    overflow: "hidden",
                 }}>
-                <LoginGridContainer alignContent="center" justify="center">
-                    <InfoText
-                        h3
-                        style={{
-                            textAlign: "left",
-                        }}>
-                        <FaWineBottle />
-                        Sheetbar
+                <LoginGridContainer className="login-container__grid">
+                    <InfoText h3>
+                        <FaWineBottle id="login__wine" />
+                        <InfoText b>Sheetbar</InfoText>
                     </InfoText>
 
                     <Grid.Container gap={8} justify="center">
                         <Grid xs={12}>
-                            <Card style={{ backgroundColor: "transparent" }}>
+                            <Card style={{ backgroundColor: "transparent", width: "75%", margin: "auto" }}>
                                 <Card.Header style={{ margin: "auto" }}>
-                                    <InfoText h3>Welcome</InfoText>
+                                    <InfoText b h2>
+                                        Welcome
+                                    </InfoText>
                                 </Card.Header>
 
                                 <Card.Body>
@@ -83,11 +53,11 @@ const Login: React.FC<any> = () => {
                                         style={{
                                             marginTop: 32,
                                         }}>
-                                        <Link color="text" onClick={() => navigator("/reset")}>
-                                            Oops! Forget Password?
+                                        <Link className="login-link" color="text" onClick={() => navigator("/reset")}>
+                                            Forget Password?
                                         </Link>
 
-                                        <Button shadow type="submit" onClick={onLogin}>
+                                        <Button shadow className="login-button" type="submit" onClick={onLogin}>
                                             Submit
                                         </Button>
                                     </Grid.Container>

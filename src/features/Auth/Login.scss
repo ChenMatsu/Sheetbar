@@ -1,0 +1,38 @@
+@import "~/src/common/base.scss";
+
+.login-container {
+    background-color: $main-color;
+
+    .login-container--inner {
+        border-style: solid;
+        border-color: $main-shallow-light-color;
+        background-color: $main-light-color;
+        overflow: hidden;
+    }
+
+    .login-container__grid {
+        align-content: center;
+        justify-content: flex-start;
+        margin-left: calc($base-margin * 4);
+    }
+}
+
+#login__wine {
+    position: relative;
+    font-size: 125%;
+    z-index: 1;
+    margin-right: calc($base-margin * -6);
+}
+
+.login-link {
+    transition: 0.25s;
+    user-select: none;
+
+    &:hover {
+        transform: translate(0, calc($base-height * -2.5));
+    }
+}
+
+.login-button {
+    background-color: $main-color;
+}
