@@ -5,12 +5,12 @@ import { FormInput } from "../../components/Form/Form";
 import { InfoText } from "../../components/Text/Text";
 import { FaWineBottle } from "react-icons/fa";
 import { RiGithubFill, RiGoogleFill, RiFacebookCircleFill } from "react-icons/ri";
-import { LoginContainer, LoginInnerContainer, LoginGridContainer } from "./LoginStlyeComponent";
-import Consts from "../../common/consts";
+import { AuthContainer, AuthInnerContainer, AuthGridContainer } from "./AuthStlyeComponent";
 import LoginImage from "../../assets/images/Login.png";
-import "./Login.scss";
+import "./common.scss";
+import "./LoginContent.scss";
 
-const Login: React.FC = () => {
+const LoginContent: React.FC = () => {
     const navigator = useNavigate();
     const { theme } = useTheme();
 
@@ -23,15 +23,15 @@ const Login: React.FC = () => {
     };
 
     return (
-        <LoginContainer className="login-container">
-            <LoginInnerContainer
-                className="login-container--inner"
+        <AuthContainer className="auth-container">
+            <AuthInnerContainer
+                className="auth-container--inner"
                 style={{
                     borderWidth: theme?.borderWeights.normal.value,
                 }}>
-                <LoginGridContainer className="login-container__grid">
+                <AuthGridContainer className="auth-container__grid">
                     <InfoText h3>
-                        <FaWineBottle id="login__wine" />
+                        <FaWineBottle id="auth__wine" />
                         <InfoText b>Sheetbar</InfoText>
                     </InfoText>
 
@@ -53,29 +53,31 @@ const Login: React.FC = () => {
                                         style={{
                                             marginTop: 32,
                                         }}>
-                                        <Link className="login-link" color="text" onClick={() => navigator("/reset")}>
+                                        <Link className="auth-link" color="text" onClick={() => navigator("/reset")}>
                                             Forget Password?
                                         </Link>
 
-                                        <Button shadow className="login-button" type="submit" onClick={onLogin}>
+                                        <Button shadow className="auth-button" type="submit" onClick={onLogin}>
                                             Submit
                                         </Button>
                                     </Grid.Container>
                                 </Card.Body>
 
-                                <Card.Footer
-                                    style={{
-                                        margin: 8,
-                                    }}>
+                                <Card.Footer className="auth__card--footer">
                                     <Grid.Container>
                                         <Grid xs={12}>
                                             <InfoText h5>New Musician?</InfoText>
                                         </Grid>
 
                                         <Grid xs={8}>
-                                            <InfoText h5 style={{ height: "auto", margin: "auto" }}>
-                                                Register or
-                                            </InfoText>
+                                            <Link
+                                                className="auth-link"
+                                                color="text"
+                                                onClick={() => navigator("/signup")}>
+                                                <InfoText h5 style={{ height: "auto", margin: "auto" }}>
+                                                    Sign up or
+                                                </InfoText>
+                                            </Link>
 
                                             <Button.Group ghost color="gradient" size="sm">
                                                 <Button>
@@ -94,9 +96,9 @@ const Login: React.FC = () => {
                             </Card>
                         </Grid>
                     </Grid.Container>
-                </LoginGridContainer>
+                </AuthGridContainer>
 
-                <LoginGridContainer gap={6} direction="row">
+                <AuthGridContainer gap={6} direction="row">
                     <Grid xs={12}>
                         <Card
                             style={{
@@ -107,10 +109,10 @@ const Login: React.FC = () => {
                             </Card.Body>
                         </Card>
                     </Grid>
-                </LoginGridContainer>
-            </LoginInnerContainer>
-        </LoginContainer>
+                </AuthGridContainer>
+            </AuthInnerContainer>
+        </AuthContainer>
     );
 };
 
-export default Login;
+export default LoginContent;
